@@ -24,7 +24,7 @@ jobs:
       uses: teleport-actions/auth@v2.0.1
       with:
         proxy: csuttles.teleport.sh:443
-        token: teleport-test
+        token: ack-shun
         # Enable the submission of anonymous usage telemetry. This
         # helps us shape the future development of `tbot`. You can disable this
         # by omitting this.
