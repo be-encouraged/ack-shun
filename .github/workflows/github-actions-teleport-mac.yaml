@@ -18,8 +18,9 @@ jobs:
     - name: Install teleport pkg
       run: sudo installer -pkg ./teleport-ent-15.1.1.pkg -target /
     # server access example
-    - name: Setup tbot cfg
-      run: tbot configure --join-method github --token ack-shun --join-method github --auth-server csuttles.teleport.sh:443 --oneshot -o ./tbot.cfg
+#     replace with tbot.cfg in repo
+#    - name: Setup tbot cfg
+#      run: tbot configure --join-method github --token ack-shun --join-method github --auth-server csuttles.teleport.sh:443 --oneshot -o ./tbot.cfg
     - name: tbot init dir
       run: tbot init -d -c ./tbot.cfg --no-clean --reader-user $(whoami) --destination-dir .
     - name: Fetch credentials using Machine ID
