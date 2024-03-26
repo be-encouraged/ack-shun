@@ -32,7 +32,7 @@ jobs:
         app: nexus
         certificate-ttl: 1h
     - name: Make curl request with certs
-      run: curl -iL --cert ${{ steps.auth.outputs.certificate-file }} --key ${{ steps.auth.outputs.key-file }} --connect-timeout 10 nexus.csuttles.teleport.sh | head
+      run: curl -iL --cert ${{ steps.auth.outputs.certificate-file }} --key ${{ steps.auth.outputs.key-file }} --connect-timeout 10 https://nexus.csuttles.teleport.sh | head
     - name: List nodes (tsh)
       # Enters a command from the cluster, in this case "tsh ls" using Machine
       # ID credentials to list remote SSH nodes.
