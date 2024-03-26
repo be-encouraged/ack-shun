@@ -15,7 +15,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
     - name: Fetch Teleport binaries
-      uses: teleport-actions/setup@v1
+      uses: teleport-actions/setup@v1.0.6
       with:
         version: 15.1.9
     # server access example
