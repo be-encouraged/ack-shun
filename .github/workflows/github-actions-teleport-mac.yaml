@@ -13,6 +13,8 @@ jobs:
     name: ack-shun-mac
     runs-on: macos-latest
     steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
     - name: Fetch pkg
       run: curl --remote-name https://cdn.teleport.dev/teleport-ent-15.1.1.pkg
     - name: Install teleport pkg
