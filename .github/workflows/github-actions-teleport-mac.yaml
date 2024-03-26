@@ -20,6 +20,8 @@ jobs:
     # server access example
     - name: Setup tbot cfg
       run: tbot configure --join-method github --token ack-shun --join-method github --auth-server csuttles.teleport.sh:443 --oneshot -o ./tbot.cfg
+    - name: tbot init dir
+      run: tbot -d -c ./tbot.cfg --no-clean --reader-user $(whoami) --destination-dir .
     - name: Fetch credentials using Machine ID
       id: auth
       env:
