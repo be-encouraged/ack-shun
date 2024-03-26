@@ -21,10 +21,10 @@ jobs:
     # server access example
     - name: Fetch credentials using Machine ID
       id: auth
-      uses: teleport-actions/auth@v2
+      uses: teleport-actions/auth@v2.0.1
       with:
         proxy: csuttles.teleport.sh:443
-        token: ack-shun
+        token: teleport-test
         # Enable the submission of anonymous usage telemetry. This
         # helps us shape the future development of `tbot`. You can disable this
         # by omitting this.
@@ -36,4 +36,4 @@ jobs:
       # ID credentials to list remote SSH nodes.
       run: tsh ls
     - name: Node info
-      run: uname -a && cat /etc/issue && cat /etc/debian_release && ip a && free -g && grep -c ^processor /proc/cpuinfo
+      run: uname -a && cat /etc/issue && free -g && grep -c ^processor /proc/cpuinfo
