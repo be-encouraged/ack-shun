@@ -19,7 +19,7 @@ jobs:
     # server access example
     - name: Fetch credentials using Machine ID
       id: auth
-      run: tbot start --token ack-shun --join-method github --proxy-server csuttles.teleport.sh
+      run: tbot start --token ack-shun --join-method github --auth-server csuttles.teleport.sh
 #      uses: teleport-actions/auth-application@v2.0.1
 #      with:
 #        proxy: csuttles.teleport.sh:443
