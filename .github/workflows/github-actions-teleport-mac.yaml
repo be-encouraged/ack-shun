@@ -17,18 +17,11 @@ jobs:
     - name: Install teleport pkg
       run: sudo installer -pkg ./teleport-ent-15.1.1.pkg -target /
     # server access example
+    - name: Setup tbot cfg
+      run: tbot configure --join-method github --token ack-shun --join-method github --auth-server csuttles.teleport.sh --oneshot -o ./tbot.cfg
     - name: Fetch credentials using Machine ID
       id: auth
-      run: sudo tbot start --token ack-shun --join-method github --auth-server csuttles.teleport.sh --oneshot --destination-dir .
-      with:
-        proxy: csuttles.teleport.sh:443
-        token: ack-shun
-        # Enable the submission of anonymous usage telemetry. This
-        # helps us shape the future development of `tbot`. You can disable this
-        # by omitting this.
-        anonymous-telemetry: 1
-        app: nexus
-        certificate-ttl: 1h
+      run: sudo tbot start -c ./tbot.cfg  --destination-dir .
 #      uses: teleport-actions/auth-application@v2.0.1
 #      with:
 #        proxy: csuttles.teleport.sh:443
