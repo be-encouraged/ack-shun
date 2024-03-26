@@ -8,6 +8,7 @@ jobs:
     # able to authenticate with the cluster.
       id-token: write
       contents: read
+      pages: read
     # if you added a workflow name in the previous step, make sure you use the same value here
     name: ack-shun-mac
     runs-on: macos-latest
@@ -21,7 +22,7 @@ jobs:
       run: tbot configure --join-method github --token ack-shun --join-method github --auth-server csuttles.teleport.sh --oneshot -o ./tbot.cfg
     - name: Fetch credentials using Machine ID
       id: auth
-      run: env && sudo tbot start -c ./tbot.cfg  --destination-dir .
+      run: env && sudo tbot start -d -c ./tbot.cfg --insecure --auth-server csuttles.teleport.sh --destination-dir .
 #      uses: teleport-actions/auth-application@v2.0.1
 #      with:
 #        proxy: csuttles.teleport.sh:443
