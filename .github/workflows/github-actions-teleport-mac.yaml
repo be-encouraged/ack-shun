@@ -27,7 +27,7 @@ jobs:
         # usage telemetry. This helps us shape the future development of
         # tbot. You can disable this by omitting this.
         TELEPORT_ANONYMOUS_TELEMETRY: 1
-      run: sudo -E tbot start -d -c ./tbot.cfg --insecure --auth-server csuttles.teleport.sh --destination-dir .
+      run: sudo -E tbot start -d -c ./tbot.cfg --insecure --destination-dir .
 #      uses: teleport-actions/auth-application@v2.0.1
 #      with:
 #        proxy: csuttles.teleport.sh:443
