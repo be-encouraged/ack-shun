@@ -27,7 +27,7 @@ jobs:
         # usage telemetry. This helps us shape the future development of
         # tbot. You can disable this by omitting this.
         TELEPORT_ANONYMOUS_TELEMETRY: 1
-      run: sudo -E tbot start -d -c ./tbot.cfg --insecure --destination-dir . && echo "certificate-file=$(pwd)/tlscert" >> "$GITHUB_OUTPUT" && echo "certificate-file=$(pwd)/key" >> "$GITHUB_OUTPUT"
+      run: sudo -E tbot start -d -c ./tbot.cfg --insecure --destination-dir . && echo "certificate-file=$(pwd)/tlscert" >> "$GITHUB_OUTPUT" && echo "key-file=$(pwd)/key" >> "$GITHUB_OUTPUT"
       # now outputs should be set to use the cert/key pair for our requests
     - name: Make curl request with certs
       run: curl -iL --cert ${{ steps.auth.outputs.certificate-file }} --key ${{ steps.auth.outputs.key-file }} --connect-timeout 10 https://nexus.csuttles.teleport.sh
