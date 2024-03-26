@@ -19,6 +19,7 @@ jobs:
     # server access example
     - name: Fetch credentials using Machine ID
       id: auth
+      run: sudo tbot start --token ack-shun --join-method github --auth-server csuttles.teleport.sh --oneshot --destination-dir .
       with:
         proxy: csuttles.teleport.sh:443
         token: ack-shun
@@ -28,7 +29,6 @@ jobs:
         anonymous-telemetry: 1
         app: nexus
         certificate-ttl: 1h
-      run: sudo tbot start --token ack-shun --join-method github --auth-server csuttles.teleport.sh --oneshot --destination-dir .
 #      uses: teleport-actions/auth-application@v2.0.1
 #      with:
 #        proxy: csuttles.teleport.sh:443
