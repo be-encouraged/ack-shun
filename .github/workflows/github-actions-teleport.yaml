@@ -1,9 +1,6 @@
-on:
-push:
-  branches:
-  - main
+on: [push]
 jobs:
-demo:
+teleport-demo-ubuntu:
   permissions:
     # The "id-token: write" permission is required or Machine ID will not be
     # able to authenticate with the cluster.
