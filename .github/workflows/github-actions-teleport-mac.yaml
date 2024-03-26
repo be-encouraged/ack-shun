@@ -1,0 +1,35 @@
+name: ack-shun-mac
+run-name: "${{ github.actor }} is testing out GitHub Actions with Teleport"
+on: [push]
+jobs:
+  teleport-demo-mac:
+    permissions:
+    # The "id-token: write" permission is required or Machine ID will not be
+    # able to authenticate with the cluster.
+      id-token: write
+      contents: read
+    # if you added a workflow name in the previous step, make sure you use the same value here
+    name: ack-shun-mac
+    runs-on: macos-latest
+    steps:
+    - name: Fetch pkg
+      run: curl --remote-name https://cdn.teleport.dev/teleport-ent-15.1.1.pkg
+    - name: Install teleport pkg
+      run: sudo installer -pkg ./teleport-ent-15.1.1.pkg -target /
+    # server access example
+    - name: Fetch credentials using Machine ID
+      id: auth
+      uses: teleport-actions/auth-application@v2.0.1
+      with:
+        proxy: csuttles.teleport.sh:443
+        token: ack-shun
+        # Enable the submission of anonymous usage telemetry. This
+        # helps us shape the future development of `tbot`. You can disable this
+        # by omitting this.
+        anonymous-telemetry: 1
+        app: nexus
+        certificate-ttl: 1h
+    - name: Make curl request with certs
+      run: curl -iL --cert ${{ steps.auth.outputs.certificate-file }} --key ${{ steps.auth.outputs.key-file }} --connect-timeout 10 https://nexus.csuttles.teleport.sh
+    - name: Node info
+      run: uname -a && cat /etc/issue && free -g && grep -c ^processor /proc/cpuinfo
