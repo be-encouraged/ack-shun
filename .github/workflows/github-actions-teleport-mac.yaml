@@ -1,5 +1,5 @@
 name: ack-shun-mac
-run-name: "${{ github.actor }} is testing out GitHub Actions with Teleport"
+run-name: "${{ github.actor }} is testing out GitHub Actions with Teleport on Mac"
 on: [push]
 jobs:
   teleport-demo-mac:
