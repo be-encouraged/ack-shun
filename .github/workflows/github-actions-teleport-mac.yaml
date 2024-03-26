@@ -14,7 +14,9 @@ jobs:
     runs-on: macos-latest
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
+      with:
+        path: .
     - name: Fetch pkg
       run: curl --remote-name https://cdn.teleport.dev/teleport-ent-15.1.1.pkg
     - name: Install teleport pkg
@@ -23,8 +25,9 @@ jobs:
 #     replace with tbot.cfg in repo
 #    - name: Setup tbot cfg
 #      run: tbot configure --join-method github --token ack-shun --join-method github --auth-server csuttles.teleport.sh:443 --oneshot -o ./tbot.cfg
-    - name: tbot init dir
-      run: tbot init -d -c ./tbot.cfg --no-clean --reader-user $(whoami) --destination-dir .
+# maybe not needed?
+#    - name: tbot init dir
+#      run: tbot init -d -c ./tbot.cfg --no-clean --reader-user $(whoami) --destination-dir .
     - name: Fetch credentials using Machine ID
       id: auth
       env:
