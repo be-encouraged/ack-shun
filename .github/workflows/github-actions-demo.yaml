@@ -15,5 +15,8 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+      - name: Confirm os version
+        run: |
+          uname -a ; sw_vers -productVersion || echo
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
