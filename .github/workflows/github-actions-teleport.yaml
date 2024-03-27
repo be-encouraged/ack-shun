@@ -29,7 +29,7 @@ jobs:
         # helps us shape the future development of `tbot`. You can disable this
         # by omitting this.
         anonymous-telemetry: 1
-        app: nexus
+        app: nexus2
         certificate-ttl: 1h
     - name: Make curl request with certs
       run: curl -iL --fail-with-body --cert ${{ steps.auth.outputs.certificate-file }} --key ${{ steps.auth.outputs.key-file }} --connect-timeout 10 https://nexus2.csuttles.teleport.sh
