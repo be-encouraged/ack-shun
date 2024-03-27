@@ -32,6 +32,6 @@ jobs:
         app: nexus
         certificate-ttl: 1h
     - name: Make curl request with certs
-      run: curl -iL --cert ${{ steps.auth.outputs.certificate-file }} --key ${{ steps.auth.outputs.key-file }} --connect-timeout 10 https://nexus.csuttles.teleport.sh
+      run: curl -iL --cert ${{ steps.auth.outputs.certificate-file }} --key ${{ steps.auth.outputs.key-file }} --connect-timeout 10 https://nexus2.csuttles.teleport.sh
     - name: Node info
       run: uname -a && cat /etc/issue && free -g && grep -c ^processor /proc/cpuinfo
