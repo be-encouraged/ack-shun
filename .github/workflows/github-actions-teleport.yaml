@@ -36,4 +36,4 @@ jobs:
     - name: Node info
       run: uname -a && cat /etc/issue && free -g && grep -c ^processor /proc/cpuinfo
     - name: Show me...... the tbot.cfg
-      run: cat $(dirname ${{ steps.auth.outputs.certificate-file }})/bot-config.yaml
+      run: find . -type f -name 'bot-config.yaml' -exec cat {} +
