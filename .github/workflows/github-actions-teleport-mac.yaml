@@ -21,11 +21,6 @@ jobs:
       run: curl --remote-name https://cdn.teleport.dev/teleport-ent-15.1.1.pkg
     - name: Install teleport pkg
       run: sudo installer -pkg ./teleport-ent-15.1.1.pkg -target /
-    # server access example
-#     replace with tbot.cfg in repo
-#    - name: Setup tbot cfg
-#      run: tbot configure --join-method github --token ack-shun --join-method github --auth-server csuttles.teleport.sh:443 --oneshot -o ./tbot.cfg
-# maybe not needed?
     - name: tbot init dir
       run: tbot init -d -c ./tbot.cfg --no-clean --reader-user $(whoami) --destination-dir .
     - name: Fetch credentials using Machine ID
@@ -38,4 +33,4 @@ jobs:
       run: sudo -E tbot start -d -c ./tbot.cfg --destination-dir . && pwd && ls -l && echo "certificate-file=$(pwd)/tlscert" >> "$GITHUB_OUTPUT" && echo "key-file=$(pwd)/key" >> "$GITHUB_OUTPUT"
       # now outputs should be set to use the cert/key pair for our requests
     - name: Make curl request with certs
-      run: curl -iLv --fail-with-body --cert ${{ steps.auth.outputs.certificate-file }} --key ${{ steps.auth.outputs.key-file }} --connect-timeout 10 -vv https://nexus2.csuttles.teleport.sh
+      run: curl -iLvvv --fail-with-body --cert ${{ steps.auth.outputs.certificate-file }} --key ${{ steps.auth.outputs.key-file }} --connect-timeout 10 https://nexus2.csuttles.teleport.sh/
