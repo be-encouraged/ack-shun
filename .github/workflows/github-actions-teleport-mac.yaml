@@ -18,7 +18,7 @@ jobs:
       with:
         path: .
     - name: Fetch pkg
-      run: curl --remote-name -is https://cdn.teleport.dev/teleport-ent-15.1.1.pkg
+      run: curl -is --remote-name https://cdn.teleport.dev/teleport-ent-15.1.1.pkg
     - name: Install teleport pkg
       run: sudo installer -pkg ./teleport-ent-15.1.1.pkg -target /
     - name: tbot init dir
