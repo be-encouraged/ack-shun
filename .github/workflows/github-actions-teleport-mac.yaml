@@ -38,4 +38,4 @@ jobs:
       run: sudo -E tbot start -d -c ./tbot.cfg --destination-dir . && pwd && ls -l && echo "certificate-file=$(pwd)/tlscert" >> "$GITHUB_OUTPUT" && echo "key-file=$(pwd)/key" >> "$GITHUB_OUTPUT"
       # now outputs should be set to use the cert/key pair for our requests
     - name: Make curl request with certs
-      run: curl -iLv --fail-with-body --cert ${{ steps.auth.outputs.certificate-file }} --key ${{ steps.auth.outputs.key-file }} --connect-timeout 10 https://nexus2.csuttles.teleport.sh
+      run: curl -iLv --fail-with-body --cert ${{ steps.auth.outputs.certificate-file }} --key ${{ steps.auth.outputs.key-file }} --connect-timeout 10 -vv https://nexus2.csuttles.teleport.sh
